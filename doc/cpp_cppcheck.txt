@@ -1,0 +1,70 @@
+*cpp_cppcheck.txt*  For Vim version 7.4.  Last Change: 2015 May 29
+
+
+                    C++ Cppcheck Reference Manual
+
+                       by Brendan Robeson
+
+This is a plugin to run Cppcheck on the current C++ buffer. For details about
+Cppcheck, see http://cppcheck.sourceforge.net. For feature requests, or bugs,
+create an issue at https://github.com/brobeson/Tools. This plugin was written
+against Cppcheck 1.67. I have not tested it with other versions.
+
+1. Prerequisites                        |cpp_cppcheck-prerequisites|
+2. Running Cppcheck						|cpp_cppcheck|
+3. Configuring cpp_cppcheck				|cpp_cppcheck-config|
+
+=============================================================================
+1. Prerequisites								*cpp_cppcheck-prerequisites*
+
+Cpp_cppcheck requires that you have Cppcheck installed and that it can be
+found through your PATH environment variable. See
+http://cppcheck.sourceforge.net to download and install Cppcheck. Also, if you
+are using Linux, you can check your package respositories for a Cppcheck
+package.
+
+Vim's 'errorfile' option must be set, and you must have read and write
+permissions on that file. This should be set up for you when you install Vim.
+To check it, in Vim, use this command: >
+    :set errorfile?
+<
+I have tested this plugin on Vim 7.4, on Kubuntu Linux 14.04 and 15.04. I hope
+this plugin is cross platform. However, I don't have access to a Mac for
+testing on that platform. Also, at this time, I haven't had an opportunity to
+test it on Windows. Feedback for those platforms is appreciated.
+
+=============================================================================
+2. Running Cppcheck								*cpp_cppcheck* *:Cppcheck*
+
+To check the current buffer, just use the command :Cppcheck. Errors will be
+presented in the |quickfix-window|. Then you can use the |quickfix| commands
+to navigate through any errors.
+
+2.1 Design Rationale
+
+I've seen similar plugins for Vim, which use |makepgr| to run various code
+checking tools. I chose not to do that for a couple of reasons:
+1) A tool like Cppcheck isn't a build tool. I don't want to violate that
+   conceptual difference.
+2) I don't want to have to swich compilers in Vim to do various tasks with my
+   code. This way, I use the appropriate command for the desired task.
+
+=============================================================================
+3. Configuring cpp_cppcheck                     *cpp_cppcheck-config*
+
+Cpp_cppcheck can be configured with the following global variables. They have
+default values, but you can change them in your vimrc if those don't work for
+you.
+
+*g:cpp_cppcheck_options*  The command line options you want to pass to
+                        Cppcheck. View your Cppcheck documentation for the
+                        possible options.
+
+                        Note that you shouldn't specify a template here! If
+                        you do so, Vim won't be able to correctly parse the
+                        output of Cppcheck for the |quickfix-window|.
+
+                        The default value is empty (no options).
+
+vim:tw=78:ts=8:ft=help:norl:
+

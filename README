@@ -1,0 +1,7 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=5192
+
+This plugin will let you run Cppcheck on the C++ code in the current window. Errors from Cppcheck are presented in the quickfix window so you can edit - check - edit. Just use the command :Cppcheck. After installing the plugin, use :help cpp_cppcheck in Vim for details, including how to set command line options for Cppcheck.
+
+If you encounter any problems, or have feature requests, please create an issue at https://github.com/brobeson/Tools/
+
+I've tested this with Vim 7.4 on Linux (Kubuntu 15.04). Other platforms and versions of Vim should work, but I can't be sure.
